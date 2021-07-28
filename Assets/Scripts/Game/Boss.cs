@@ -23,27 +23,26 @@ public class Boss : MonoBehaviour
     private void Update()
     {
 
-        if (Pause.pause)
+
+        if (rt.localPosition.y <= 580)
         {
-            if (rt.localPosition.y <= 580)
-            {
-                finalPosition = true;
-            }
-            else
-            {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.2f);
-            }
-
-            if (finalPosition)
-            {
-                if (!TrySuperShot())
-                {
-                    TryShoot();
-                }
-
-                HorizontalMove();
-            }
+            finalPosition = true;
         }
+        else
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.2f);
+        }
+
+        if (finalPosition)
+        {
+            if (!TrySuperShot())
+            {
+                TryShoot();
+            }
+
+            HorizontalMove();
+        }
+
 
     }
 
@@ -75,13 +74,9 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.CompareTag("Missile"))
         {
             Destroy(collision.gameObject);
-            if (finalPosition)
-            {
-                bossHealthBar.fillAmount = bossHealthBar.fillAmount - (0.1f + (0.05f * PlayerPrefs.GetInt("WeaponUpgrade")));
-            }
+            bossHealthBar.fillAmount = bossHealthBar.fillAmount - 0.2f;
             if (bossHealthBar.fillAmount <= 0.01f)
             {
-                Ship.score += 150;
                 Destroy(gameObject);
             }
         }
@@ -91,7 +86,7 @@ public class Boss : MonoBehaviour
 
     private void TryShoot()
     {
-        if (DateTime.Now.Ticks - shotTime >= 20000000 && finalPosition)
+        if (DateTime.Now.Ticks - shotTime >= 10000000 && finalPosition)
         {
             GameObject enemyMissile = Instantiate(enenmyMissile);
             enemyMissile.transform.position = gameObject.transform.position;

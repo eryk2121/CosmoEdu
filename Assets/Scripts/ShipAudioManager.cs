@@ -9,21 +9,15 @@ public class ShipAudioManager : MonoBehaviour
 
     public void PlayMeteorCollision()
     {
-        if (Mute.sound)
-        {
-            AudioSource audio = GetComponent<AudioSource>();
-            audio.clip = meteorCollision;
-            audio.Play();
-        }
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = meteorCollision;
+        audio.Play();
     }
 
     public void RocketStart()
     {
-        if (Mute.sound)
-        {
-            AudioSource audio = GetComponent<AudioSource>();
-            audio.clip = rocketStart;
-            audio.Play();
-        }
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = rocketStart;
+        audio.Play();
     }
 }

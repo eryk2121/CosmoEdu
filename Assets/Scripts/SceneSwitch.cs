@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
-   
+    public void Start()
+    {
+    }
     public void SwitchToStats()
     {
         SceneManager.LoadScene("Stats", LoadSceneMode.Single);
@@ -45,12 +47,6 @@ public class SceneSwitch : MonoBehaviour
     public void SwitchToOptions()
     {
         SceneManager.LoadScene("Options", LoadSceneMode.Single);
-
-    }
-
-    public void SwitchToFact()
-    {
-        SceneManager.LoadScene("Fact", LoadSceneMode.Single);
 
     }
 

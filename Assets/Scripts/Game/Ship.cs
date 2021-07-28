@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    public static int score = 0;
+    private int score = 0;
 
     public GameObject missile;
     public GameObject endPanel;
     public GameObject questionPanel;
     public GameObject explosion;
     public Text text;
+    public Text endscore;
 
     public Image shipImage;
 
     public GameSpawner generator;
 
     private long time = DateTime.Now.Ticks;
-
-    public static int coins = 0;
 
     public Image health;
 
@@ -28,9 +27,7 @@ public class Ship : MonoBehaviour
     public Sprite ship4;
     public Sprite ship5;
 
-    private bool respawn = true;
 
-    private bool shieldActive = false;
 
     private void Start()
     {
@@ -65,51 +62,16 @@ public class Ship : MonoBehaviour
 
     void Update()
     {
-        if (Pause.pause)
+        if (DateTime.Now.Ticks - time >= 2000000 && !endPanel.active && !questionPanel.active)
         {
-            if (DateTime.Now.Ticks - time >= 2000000 && !endPanel.active && !questionPanel.active)
-            {
-                score++;
-                text.text = "Score:" + score;
+            score++;
+            text.text = "Score:" + score;
 
-                time = DateTime.Now.Ticks;
-            }
-
-            ShieldLogic();
+            time = DateTime.Now.Ticks;
         }
-        
+
     }
 
-    float counter = 160;
-    bool raise = true;
-    private void ShieldLogic()
-    {
-        if (DateTime.Now.Ticks - shieldTime >= 20000000 * (PlayerPrefs.GetInt("ShieldUpgrade") + 1))
-        {
-            shieldActive = false;
-        }
-        else
-        {
-            Image img = GetComponent<Image>();
-            img.color = new Color32((byte)(img.color.r * 255), (byte)(img.color.g * 255), (byte)(img.color.b * 255), (byte)counter);
-            if (raise)
-            {
-                counter += 1f;
-                if (counter == 250)
-                {
-                    raise = false;
-                }
-            }
-            else
-            {
-                counter -= 1f;
-                if (counter == 150)
-                {
-                    raise = true;
-                }
-            }
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -127,13 +89,11 @@ public class Ship : MonoBehaviour
         {
             GetComponent<ShipAudioManager>().PlayMeteorCollision();
             Explode(gameObject);
-            Destroy(gameObject);
             Hit();
         }
         else if (gameObject.CompareTag("Boss"))
         {
-            Explode(gameObject);
-            Hit(50);
+
         }
         else if (gameObject.CompareTag("EnemyMissile"))
         {
@@ -149,16 +109,6 @@ public class Ship : MonoBehaviour
             GainHeart();
             Destroy(gameObject);
         }
-        else if (gameObject.CompareTag("Shield"))
-        {
-            Shield();
-            Destroy(gameObject);
-        }
-        else if (gameObject.CompareTag("Coin"))
-        {
-            GainCoins();
-            Destroy(gameObject);
-        }
 
     }
 
@@ -169,80 +119,58 @@ public class Ship : MonoBehaviour
         n.transform.parent = go.transform.parent;
     }
 
-    long shieldTime = 0;
-
-    public void Shield()
-    {
-        shieldTime = DateTime.Now.Ticks;
-        shieldActive = true;
-    }
-
     public void GainHeart()
     {
         if (health.fillAmount < 1f)
         {
-            health.fillAmount += 0.05f * (PlayerPrefs.GetInt("HealthUpgrade")+1);
+            health.fillAmount += 0.1f;
         }
-    }
-
-    public void GainCoins()
-    {
-        int coins = PlayerPrefs.GetInt("Coins");
-        coins += 2 * (PlayerPrefs.GetInt("CoinUpgrade")+1);
-        PlayerPrefs.SetInt("Coins", coins);
-        Ship.coins += coins;
     }
 
     public void Hit()
     {
-        Quiz quiz = questionPanel.GetComponent<Quiz>();
-
-        if (health.fillAmount < 0.01f && !questionPanel.active && !endPanel.active && respawn)
+        if (health.fillAmount < 0.01f && !questionPanel.active && !endPanel.active)
         {
-            respawn = false;
-            Deactive();
             health.fillAmount = 0f;
+            //menu przegranej
             questionPanel.SetActive(true);
+            //endscore.text = "Wynik:" + score;
+            //this.gameObject.SetActive(false);
+            Quiz quiz = questionPanel.GetComponent<Quiz>();
             quiz.LoadElement();
+
+            //AddToLeaderBoard();
         }
-        else if (health.fillAmount < 0.01f)
+        else
         {
-            Deactive();
-            new SceneSwitch().SwitchToFact();
+            health.fillAmount -= 0.1f;
         }
-        else if (!shieldActive)
-        {
-            health.fillAmount -= 0.1f + score / 5000;
-        }
-        
     }
 
     public void Hit(int dmg)
     {
-        Quiz quiz = questionPanel.GetComponent<Quiz>();
-        if (health.fillAmount < 0.01f && !questionPanel.active && !endPanel.active && !shieldActive && respawn)
+        if (health.fillAmount < 0.01f && !questionPanel.active && !endPanel.active)
         {
-            respawn = false;
-            Deactive();
             health.fillAmount = 0f;
+            //menu przegranej
             questionPanel.SetActive(true);
+            //endscore.text = "Wynik:" + score;
+            //this.gameObject.SetActive(false);
+            Quiz quiz = questionPanel.GetComponent<Quiz>();
             quiz.LoadElement();
+
+            //AddToLeaderBoard();
         }
-        else if (health.fillAmount < 0.01f)
+        else
         {
-            Deactive();
-            new SceneSwitch().SwitchToFact();
-        }
-        else if (!shieldActive)
-        {
-            quiz.ZeroQuiz();
             health.fillAmount -= ((float)dmg / 100);
         }
-        
     }
+
 
     public void Restart()
     {
+
         health.fillAmount = 1f;
         endPanel.SetActive(false);
         questionPanel.SetActive(false);
@@ -250,16 +178,19 @@ public class Ship : MonoBehaviour
         gameObject.SetActive(true);
         gameObject.transform.position = new Vector3(Screen.width / 2, Screen.height / 3, 1);
         generator.ResetProgres();
+
+
     }
 
     public void SoftRestart()
     {
-        Active();
+
         health.fillAmount = 1f;
         endPanel.SetActive(false);
         questionPanel.SetActive(false);
         gameObject.SetActive(true);
         gameObject.transform.position = new Vector3(Screen.width / 2, Screen.height / 3, 1);
+
     }
 
     public void ActiveEndPanel() {
@@ -274,31 +205,25 @@ public class Ship : MonoBehaviour
 
     public void Shot()
     {
-        if (DateTime.Now.Ticks - shotTime >= 5000000)
+        if (DateTime.Now.Ticks - shotTime >= 10000000)
         {
             GetComponent<ShipAudioManager>().RocketStart();
+
             GameObject miss = Instantiate(missile);
+
+
             miss.transform.SetParent(this.gameObject.transform.parent);
             miss.transform.position = this.gameObject.transform.position;
+
             shotTime = DateTime.Now.Ticks;
         }
-    }
-
-    public void Deactive()
-    {
-        gameObject.SetActive(false);
-    }
-    public void Active()
-    {
-        gameObject.SetActive(true);
     }
 
     public void AddCoins()
     {
         int coins = PlayerPrefs.GetInt("Coins");
-        coins += score / 200;
+        coins += score / 10;
         PlayerPrefs.SetInt("Coins", coins);
-        Ship.coins += coins;
     }
 
     public void UpdateMaxScore()
@@ -328,4 +253,106 @@ public class Ship : MonoBehaviour
         return score;
     }
 
+
+
+    /*
+    public void AddToLeaderBoard()
+    {
+        int oldScore = 0;
+
+        if (score > PlayerPrefs.GetInt("1"))
+        {
+            oldScore = PlayerPrefs.GetInt("1");
+            PlayerPrefs.DeleteKey("1");
+            PlayerPrefs.SetInt("1", score);
+            AddToLeaderBoard(oldScore);
+        }
+        else if (score > PlayerPrefs.GetInt("2"))
+        {
+            oldScore = PlayerPrefs.GetInt("2");
+
+            PlayerPrefs.DeleteKey("2");
+            PlayerPrefs.SetInt("2", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+        else if (score > PlayerPrefs.GetInt("3"))
+        {
+            oldScore = PlayerPrefs.GetInt("3");
+
+            PlayerPrefs.DeleteKey("3");
+            PlayerPrefs.SetInt("3", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+        else if (score > PlayerPrefs.GetInt("4"))
+        {
+            oldScore = PlayerPrefs.GetInt("4");
+
+            PlayerPrefs.DeleteKey("4");
+            PlayerPrefs.SetInt("4", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+        else if (score > PlayerPrefs.GetInt("5"))
+        {
+            oldScore = PlayerPrefs.GetInt("5");
+
+            PlayerPrefs.DeleteKey("5");
+            PlayerPrefs.SetInt("5", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+    }
+
+    public void AddToLeaderBoard(int score)
+    {
+        int oldScore = 0;
+
+        if (score > PlayerPrefs.GetInt("1"))
+        {
+            oldScore = PlayerPrefs.GetInt("1");
+            PlayerPrefs.DeleteKey("1");
+            PlayerPrefs.SetInt("1", score);
+            AddToLeaderBoard(oldScore);
+        }
+        else if (score > PlayerPrefs.GetInt("2"))
+        {
+            oldScore = PlayerPrefs.GetInt("2");
+
+            PlayerPrefs.DeleteKey("2");
+            PlayerPrefs.SetInt("2", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+        else if (score > PlayerPrefs.GetInt("3"))
+        {
+            oldScore = PlayerPrefs.GetInt("3");
+
+            PlayerPrefs.DeleteKey("3");
+            PlayerPrefs.SetInt("3", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+        else if (score > PlayerPrefs.GetInt("4"))
+        {
+            oldScore = PlayerPrefs.GetInt("4");
+
+            PlayerPrefs.DeleteKey("4");
+            PlayerPrefs.SetInt("4", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+        else if (score > PlayerPrefs.GetInt("5"))
+        {
+            oldScore = PlayerPrefs.GetInt("5");
+
+            PlayerPrefs.DeleteKey("5");
+            PlayerPrefs.SetInt("5", score);
+            AddToLeaderBoard(oldScore);
+
+        }
+        
+    }
+    */
 }

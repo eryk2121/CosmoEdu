@@ -1,1 +1,1 @@
-Ile ksiezycow ma ziemia?:7:2:1:A:CIEKAWOSTKA1*Ile Slonc ma ziemia?:4:1:2:B:CIEKAWOSTKA2*Ile Slonc ma Jowisz?:4:1:2:B:CIEKAWOSTKA3*Ile ksiezycow ma Saturn?:2:2:1:C:CIEKAWOSTKA
+Ile ksiezycow ma ziemia?:7:2:1:A*Ile Slonc ma ziemia?:4:1:2:B*Ile Slonc ma Jowisz?:4:1:2:B*Ile ksiezycow ma Saturn?:2:2:1*::::

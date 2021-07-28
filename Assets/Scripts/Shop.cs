@@ -48,7 +48,7 @@ public class Shop : MonoBehaviour
 
     public void BuyShip1()
     {
-        if (PlayerPrefs.GetInt("Ship1B")==1 || Buy(100))
+        if (Buy() || PlayerPrefs.GetInt("Ship1B")==1)
         {
             Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship1");
@@ -60,7 +60,7 @@ public class Shop : MonoBehaviour
 
     public void BuyShip2()
     {
-        if (PlayerPrefs.GetInt("Ship2B") == 1 || Buy(200))
+        if (Buy() || PlayerPrefs.GetInt("Ship2B") == 1)
         {
             Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship2");
@@ -73,7 +73,7 @@ public class Shop : MonoBehaviour
 
     public void BuyShip3()
     {
-        if (PlayerPrefs.GetInt("Ship3B") == 1 || Buy(300))
+        if (Buy() || PlayerPrefs.GetInt("Ship3B") == 1)
         {
             Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship3");
@@ -86,7 +86,7 @@ public class Shop : MonoBehaviour
 
     public void BuyShip4()
     {
-        if (PlayerPrefs.GetInt("Ship4B") == 1 || Buy(400))
+        if (Buy() || PlayerPrefs.GetInt("Ship4B") == 1)
         {
             Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship4");
@@ -99,7 +99,7 @@ public class Shop : MonoBehaviour
 
     public void BuyShip5()
     {
-        if (PlayerPrefs.GetInt("Ship5B") == 1 || Buy(500))
+        if (Buy() || PlayerPrefs.GetInt("Ship5B") == 1)
         {
             Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship5");
@@ -119,17 +119,6 @@ public class Shop : MonoBehaviour
             return true;
         }
         return false; 
-    }
-
-    private bool Buy(int cost)
-    {
-        if (PlayerPrefs.GetInt("Coins") >= cost)
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - cost);
-
-            return true;
-        }
-        return false;
     }
 
 

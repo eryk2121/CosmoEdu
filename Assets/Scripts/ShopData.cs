@@ -11,16 +11,13 @@ public class ShopData : MonoBehaviour
     Image shieldProgresBar;
     [SerializeField]
     Image coinProgresBar;
-    [SerializeField]
-    Image weaponProgresBar;
-
-    [SerializeField]
-    CoinLoad coinLoad;
-
     // Start is called before the first frame update
     void Start()
     {
         LoadShopData();
+        PlayerPrefs.SetInt("HealthUpgrade", 0);
+        PlayerPrefs.SetInt("ShieldUpgrade", 0);
+        PlayerPrefs.SetInt("CoinUpgrade", 0);
     }
 
     private void LoadShopData()
@@ -28,13 +25,12 @@ public class ShopData : MonoBehaviour
         healthProgresBar.fillAmount = 0.2f*PlayerPrefs.GetInt("HealthUpgrade");
         shieldProgresBar.fillAmount = 0.2f*PlayerPrefs.GetInt("ShieldUpgrade");
         coinProgresBar.fillAmount = 0.2f*PlayerPrefs.GetInt("CoinUpgrade");
-        weaponProgresBar.fillAmount = 0.2f * PlayerPrefs.GetInt("WeaponUpgrade");
     }
 
     public void UpgradeHealth()
     {
         int level = PlayerPrefs.GetInt("HealthUpgrade");
-        if (level < 5 && Buy())
+        if (level < 5)
         {
             PlayerPrefs.SetInt("HealthUpgrade", level+1);
         }
@@ -43,7 +39,7 @@ public class ShopData : MonoBehaviour
     public void UpgradeShield()
     {
         int level = PlayerPrefs.GetInt("ShieldUpgrade");
-        if (level < 5 && Buy())
+        if (level < 5)
         {
             PlayerPrefs.SetInt("ShieldUpgrade", level + 1);
         }
@@ -52,31 +48,10 @@ public class ShopData : MonoBehaviour
     public void UpgradeCoin()
     {
         int level = PlayerPrefs.GetInt("CoinUpgrade");
-        if (level < 5 && Buy())
+        if (level < 5)
         {
             PlayerPrefs.SetInt("CoinUpgrade", level + 1);
         }
         LoadShopData();
-    }
-    public void UpgradeWeapon()
-    {
-        int level = PlayerPrefs.GetInt("WeaponUpgrade");
-        if (level < 5 && Buy())
-        {
-            PlayerPrefs.SetInt("WeaponUpgrade", level + 1);
-        }
-        LoadShopData();
-    }
-
-    private bool Buy()
-    {
-        if (PlayerPrefs.GetInt("Coins") >= 100)
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 100);
-
-            coinLoad.UpdateCoins();
-            return true;
-        }
-        return false;
     }
 }

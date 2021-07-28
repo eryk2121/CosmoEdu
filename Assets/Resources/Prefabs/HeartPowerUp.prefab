@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1582991656180859968}
   - component: {fileID: 442532514656442170}
   - component: {fileID: -5267709079842571635}
-  - component: {fileID: -3523414355748835949}
   m_Layer: 5
   m_Name: HeartPowerUp
   m_TagString: Heart
@@ -122,24 +121,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5bf89d1b062754d81d5f73e0404d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &-3523414355748835949
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389966249336763848}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
