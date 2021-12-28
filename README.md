@@ -1,7 +1,7 @@
 # CosmoEdu
 This is the Android Mobile Game 
 
-1 Wstęp 
+#1 Wstęp 
 
 1.1 Telefon w 21 wieku
 
@@ -18,15 +18,15 @@ This is the Android Mobile Game
 1.6 Zakres Pracy
 
 
-2. Projekt
+#2. Projekt
 
 2.1 Wymagania funkcjonalne oraz niefunkcjonalne
 
 2.2 Diagram Przypadków Użycia
 
-3. Game Document
+#3. Game Document
 
-4.Implementacja
+#4.Implementacja
 
 4.1 Wykorzystane Technologie
 
@@ -36,7 +36,7 @@ This is the Android Mobile Game
 
 4.3 Problemy Implementacyjne
 
-5. Podsumowanie
+#5. Podsumowanie
 
 5.1 Plany rozwoju aplikacji
 
