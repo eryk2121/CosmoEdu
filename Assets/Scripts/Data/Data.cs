@@ -3,29 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Klasa która reprezentuje model bazy danych
+// Klasa ktÃ³ra reprezentuje model bazy danych
 [CreateAssetMenu(fileName = "Data", menuName = "CreateData")]
 public class Data : ScriptableObject
 {
     [field: SerializeField]
-    public int AmountOfPlay { get; set; } // Infomracja o liczie gier
+    public int AmountOfPlay { get; set; } 
     [field: SerializeField]
-    public int CorrectAnserwrs { get; set; } // Infomracja o poprawnych odp
+    public int CorrectAnserwrs { get; set; } /
     [field: SerializeField]
-    public int HighScore { get; set; } // Infomracja o najlepszym wyniku
+    public int HighScore { get; set; } 
     [field: SerializeField]
     public List<QuestionSerializable> Questions { get; set; } = new List<QuestionSerializable>(); // Storzone przez nas pytania
     [field: SerializeField]
-    public List<QuestionSerializable> DefaultQuestions { get; set; } = new List<QuestionSerializable>(); // Defaultowe pytania
+    public List<QuestionSerializable> DefaultQuestions { get; set; } = new List<QuestionSerializable>(); //Defaultowe Pytania
     [field: SerializeField]
-    public int CurrentCoins { get; set; } // Liczbê coinsów obecnie
+    public int CurrentCoins { get; set; } 
     [field: SerializeField]
     public List<int> BestScores { get; set; } = new List<int>();  // Najlepsze score 
 
-    public int LastAddedCoins { get; set; } // Ostatnie zdobyte coinsy,  potrzebne do wyœwietlenia po zakonczeniu gry 
-    public int LastAchievedScore { get; set; } // Ostatnie zdobyte punkty, potrzebne do porównania HighScore  
+    public int LastAddedCoins { get; set; } // Ostatnie zdobyte coinsy,  potrzebne do wyÅ“wietlenia po zakonczeniu gry 
+    public int LastAchievedScore { get; set; } // Ostatnie zdobyte punkty, potrzebne do porÃ³wnania HighScore  
 
-    // Pobieranie pytan do wyœwietlenia
+    // Pobieranie pytan do wyÅ“wietlenia
     public List<QuestionSerializable> GetQuestions()
     {
         List<QuestionSerializable> allQuestions = new List<QuestionSerializable>();
@@ -61,11 +61,11 @@ public class Data : ScriptableObject
     {
         if (saveResult == SaveResult.Success)
         {
-            Debug.Log("Zapisa³em Dane");
+            Debug.Log("ZapisaÂ³em Dane");
         }
         else if (saveResult == SaveResult.Error)
         {
-            Debug.LogError("Zapis siê nie uda³");
+            Debug.LogError("Zapis siÃª nie udaÂ³");
         }
     }
 
@@ -89,11 +89,11 @@ public class Data : ScriptableObject
 
             CurrentCoins = loadedData.CurrentCoins;
 
-            Debug.Log("Odczyta³em dane");
+            Debug.Log("OdczytaÂ³em dane");
         }
         else if(loadResult == SaveResult.Error)
         {
-            Debug.LogError("Nie odczyta³em dane");
+            Debug.LogError("Nie odczytaÂ³em dane");
         }
     }
 
@@ -121,7 +121,7 @@ public class Data : ScriptableObject
         PlayerPrefs.SetString("Ship", "Ship1");
     }
 
-    // Dodanie scora to tablicy wyników - próba
+    // Dodanie scora to tablicy wynikÃ³w - prÃ³ba
     public void TryToAddScoreScoreboard(int score)
     {
         BestScores.Add(score);
@@ -134,7 +134,7 @@ public class Data : ScriptableObject
     }
 }
 
-// Ta sama klasa co wy¿ej tylko siê serializuje
+
 [System.Serializable]
 public class DataSerializable
 {
@@ -146,7 +146,7 @@ public class DataSerializable
     public List<int> BestScores;
 }
 
-// Klasa która pokazuje model pytania
+
 [System.Serializable]
 public class QuestionSerializable
 {
