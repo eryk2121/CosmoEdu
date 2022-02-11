@@ -7,12 +7,14 @@ This is the Android Mobile Game
 1.2 Główna tematyka	
 1.3	Przegląd istniejących rozwiązań na rynku	
 1.4	Cel oraz zakres pracy	
+
 #2.	Projekt	
 2.1	Wymagania aplikacji	
 2.2	Technologie użyte przy produkcji	
 2.3	Diagram stanu	
 2.4	Opis poszczególnych scen	
 2.5	Baza Pytań	
+
 #3.	Implementacja	
 3.1.1 Sklep	
 3.1.2 Panel Statystyk	
@@ -32,10 +34,12 @@ This is the Android Mobile Game
 3.3	Mechanika Edukacyjna	
 3.3.1	Quiz Interaktywny	
 3.3.2	Ciekawostki	
+
 #4. Kierunki dalszego rozwoju	
 4.1 Wprowadzenie modułu sieciowego	
 4.2 Stworzenie innych wersji językowych	
 4.3 Rozwinięcie zawartości produktu	
+
 #5. Podsumowanie	
 #Bibliografia	
 #Wykaz rysunków oraz tabel	
