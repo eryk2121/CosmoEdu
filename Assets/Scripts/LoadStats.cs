@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class LoadStats : MonoBehaviour
 {
+    public Data dataBase;
     public Text maxScore;
     public Text maxCorrectAnswers;
     public Text gamesAmount;
     // Start is called before the first frame update
     void Start()
     {
-        maxScore.text = "Max Score:" + PlayerPrefs.GetInt("MaxScore").ToString();
-        maxCorrectAnswers.text = "Correct Answers:" + PlayerPrefs.GetInt("CorrectAnswer").ToString();
-        gamesAmount.text = "Games Amount:" + PlayerPrefs.GetInt("GamesAmount").ToString();
+        
+    }
+
+    public void Update()
+    {
+        gamesAmount.text = "Liczba gier: " + dataBase.AmountOfPlay.ToString();
+        maxCorrectAnswers.text = "Poprawne odpowiedzi:" + dataBase.CorrectAnserwrs.ToString();
+        maxScore.text = "Najwyższy wynik:" + dataBase.HighScore.ToString();
     }
 }

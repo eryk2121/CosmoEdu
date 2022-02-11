@@ -9,14 +9,14 @@ public class Pause : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0; //zablokowanie ruchu obiektów
         pause = false;
         pausePanel.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1; //uruchomienie ruchu obiektów
         pause = true;
         pausePanel.SetActive(false);
     }

@@ -13,8 +13,8 @@ public class ShinyText : MonoBehaviour
         
     }
 
-    float counter = 160;
-    bool raise = true;
+    float counter = 160; //zmienna odpowiadająca maksymalnej wartości pokolorowanego tekstu
+    bool raise = true; // zmienna odpowiadająca czy wartość koloru ma rosnąć bądź maleć
 
     // Update is called once per frame
     void Update()

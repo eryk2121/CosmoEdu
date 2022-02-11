@@ -5,16 +5,11 @@ using UnityEngine;
 
 public class CoinLoad : MonoBehaviour
 {
+    public Data dataBase;
     public Text coins;
-    // Start is called before the first frame update
-    void Start()
-    {
-        coins.text = PlayerPrefs.GetInt("Coins").ToString();
-    }
 
-    public void UpdateCoins()
+    public void Update()
     {
-        coins.text = PlayerPrefs.GetInt("Coins").ToString();
+        coins.text = dataBase.CurrentCoins.ToString();
     }
-
 }

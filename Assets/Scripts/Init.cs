@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Init : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Inicjalizacja zmiennych przy pierwszym uruchomieniu
     void Start()
     {
         if (!PlayerPrefs.HasKey("HealthUpgrade"))
@@ -24,6 +24,11 @@ public class Init : MonoBehaviour
             PlayerPrefs.SetInt("WeaponUpgrade", 0);
         }
 
+        if (!PlayerPrefs.HasKey("FreezeUpgrade"))
+        {
+            PlayerPrefs.SetInt("FreezeUpgrade", 0);
+        }
+
         if (!PlayerPrefs.HasKey("Coins"))
         {
             PlayerPrefs.SetInt("Coins", 0);
@@ -41,7 +46,7 @@ public class Init : MonoBehaviour
         {
             PlayerPrefs.SetInt("GamesAmount", 0);
         }
-        
+
 
         if (!PlayerPrefs.HasKey("Ship1B"))
         {

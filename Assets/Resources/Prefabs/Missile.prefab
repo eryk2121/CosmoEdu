@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -637, y: -135.11339}
-  m_SizeDelta: {x: 36.52588, y: 172.31921}
+  m_AnchoredPosition: {x: -625.94, y: -140.82396}
+  m_SizeDelta: {x: 26.6663, y: 160.8979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8333499420599528311
 CanvasRenderer:
@@ -63,11 +63,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bc432b160f314174791b8f2615d59fe8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 952e45d691734604fb5efefb876022dc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -99,11 +100,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00005531311, y: 14.672989}
-  m_Size: {x: 20.339218, y: 138.96176}
+  m_Offset: {x: 0.2358284, y: 2.648285}
+  m_Size: {x: 24.58323, y: 154.52301}
   m_Direction: 0
 --- !u!50 &4914864413467536432
 Rigidbody2D:

@@ -11,6 +11,10 @@ TagManager:
   - Missile
   - Boss
   - EnemyMissile
+  - Shield
+  - Coin
+  - Freeze
+  - Satelite
   layers:
   - Default
   - TransparentFX

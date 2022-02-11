@@ -7,8 +7,6 @@ public class PanelScript : MonoBehaviour
 {
     public Ship ship;
 
-   
-
     public void Start()
     {
        
@@ -35,29 +33,4 @@ public class PanelScript : MonoBehaviour
         Exit();
     }
 
-    /*public void PrepareLeaderBoard()
-    {
-        if (!PlayerPrefs.HasKey("1"))
-        {
-            PlayerPrefs.SetInt("1", 0);
-        }
-        if (!PlayerPrefs.HasKey("2"))
-        {
-            PlayerPrefs.SetInt("2", 0);
-        }
-        if (!PlayerPrefs.HasKey("3"))
-        {
-            PlayerPrefs.SetInt("3", 0);
-        }
-        if (!PlayerPrefs.HasKey("4"))
-        {
-            PlayerPrefs.SetInt("4", 0);
-        }
-        if (!PlayerPrefs.HasKey("5"))
-        {
-            PlayerPrefs.SetInt("5", 0);
-        }
-    }*/
-
-   
 }

@@ -22,27 +22,27 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
-
-
-        if (rt.localPosition.y <= 580)
+        if (Pause.pause)
         {
-            finalPosition = true;
-        }
-        else
-        {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.2f);
-        }
-
-        if (finalPosition)
-        {
-            if (!TrySuperShot())
+            if (rt.localPosition.y <= 580)
             {
-                TryShoot();
+                finalPosition = true;
+            }
+            else
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.2f);
             }
 
-            HorizontalMove();
-        }
+            if (finalPosition)
+            {
+                if (!TrySuperShot())
+                {
+                    TryShoot();
+                }
 
+                HorizontalMove();
+            }
+        }
 
     }
 
@@ -74,9 +74,13 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.CompareTag("Missile"))
         {
             Destroy(collision.gameObject);
-            bossHealthBar.fillAmount = bossHealthBar.fillAmount - 0.2f;
+            if (finalPosition)
+            {
+                bossHealthBar.fillAmount = bossHealthBar.fillAmount - (0.1f + (0.05f * PlayerPrefs.GetInt("WeaponUpgrade")));
+            }
             if (bossHealthBar.fillAmount <= 0.01f)
             {
+                Ship.score += 150;
                 Destroy(gameObject);
             }
         }
@@ -86,7 +90,7 @@ public class Boss : MonoBehaviour
 
     private void TryShoot()
     {
-        if (DateTime.Now.Ticks - shotTime >= 10000000 && finalPosition)
+        if (DateTime.Now.Ticks - shotTime >= 19000000 && finalPosition)
         {
             GameObject enemyMissile = Instantiate(enenmyMissile);
             enemyMissile.transform.position = gameObject.transform.position;
@@ -99,7 +103,7 @@ public class Boss : MonoBehaviour
 
     private bool TrySuperShot()
     {
-        if (DateTime.Now.Ticks - superShotTime >= 9553070 && finalPosition && (gameObject.transform.position.x > (Screen.width / 2 - 10) && gameObject.transform.position.x < (Screen.width / 2 + 10)))
+        if (DateTime.Now.Ticks - superShotTime>= 90000000 &&  finalPosition && (gameObject.transform.position.x > (Screen.width / 2 - 10) && gameObject.transform.position.x < (Screen.width / 2 + 10)))
         {
             int dir = -6;
             for (int i = 0; i < 5; i++)

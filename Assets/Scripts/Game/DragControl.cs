@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// do produkcji poniższego skryptru użyto dokumentacji Unity https://docs.unity3d.com/ScriptReference/Input.GetTouch.html
+
 public class DragControl : MonoBehaviour
 {
     private bool active = false;
@@ -12,6 +14,7 @@ public class DragControl : MonoBehaviour
     private GraphicRaycaster m_Raycaster;
     private PointerEventData m_PointerEventData;
     private EventSystem m_EventSystem;
+
 
     private DragShip ds;
 
@@ -35,62 +38,67 @@ public class DragControl : MonoBehaviour
 
     private void Update()
     {
-
-        if (active && (Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)))
+        if (!Ship.freeze)
         {
-            Drop();
-            return;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 pos = Input.mousePosition;
-            screen = new Vector2(pos.x, pos.y);
-        }
-        else if (Input.touchCount > 0)
-        {
-            screen = Input.GetTouch(0).position;
-        }
-        else
-        {
-            return;
-        }
-
-        world = Camera.main.ScreenToWorldPoint(screen);
-
-        if (active)
-        {
-            Drag();
-        }
-        else
-        {
-            m_PointerEventData = new PointerEventData(m_EventSystem);
-            m_PointerEventData.position = Input.mousePosition;
-            List<RaycastResult> results = new List<RaycastResult>();
-            m_Raycaster.Raycast(m_PointerEventData, results);
-           
-            DragShip ds = results[0].gameObject.transform.gameObject.GetComponent<DragShip>();
-
-            if (ds != null)
+            if (active && (Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)))
             {
-                active = true;
-                this.ds = ds;
-                InitDrag();
+                Drop();
+                return;
             }
-           
-        }
-    }
-    void InitDrag()
-    {
-        active = true;
-    }
-    void Drag()
-    {
 
-        ds.transform.position = Input.GetTouch(0).position;
-    }
-    void Drop()
-    {
-        active = false;
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 pos = Input.mousePosition;
+                screen = new Vector2(pos.x, pos.y);
+            }
+            else if (Input.touchCount > 0)
+            {
+                screen = Input.GetTouch(0).position;
+            }
+            else
+            {
+                return;
+            }
+
+           
+            world = Camera.main.ScreenToWorldPoint(screen);
+
+            if (active)
+            {
+                Drag();
+            }
+            else
+            {
+                m_PointerEventData = new PointerEventData(m_EventSystem);
+                m_PointerEventData.position = Input.mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                m_Raycaster.Raycast(m_PointerEventData, results);
+
+                DragShip ds = results[0].gameObject.transform.gameObject.GetComponent<DragShip>();
+
+                if (ds != null)
+                {
+                    active = true;
+                    this.ds = ds;
+                    InitDrag();
+                }
+
+            }
+        }
+        void InitDrag()
+        {
+            active = true;
+        }
+        void Drag()
+        {
+
+            ds.transform.position = Input.GetTouch(0).position;
+	    
+        }
+        void Drop()
+        {
+            active = false;
+        }
+
     }
 }

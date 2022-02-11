@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32de6cf6bdcdccf41974c23a68d11dd9, type: 3}
+  m_Name: DataBase
+  m_EditorClassIdentifier: 
+  <AmountOfPlay>k__BackingField: 0
+  <CorrectAnserwrs>k__BackingField: 0
+  <HighScore>k__BackingField: 0
+  <Questions>k__BackingField: []
+  <DefaultQuestions>k__BackingField:
+  - Question: "Dzie\u0144, w kt\xF3rym bezpo\u015Brednie promienie S\u0142o\u0144ca
+      przecinaj\u0105 r\xF3wnik niebieski, nazywa si\u0119:"
+    AnswearA: "R\xF3wnonoc"
+    AnswearB: 'Wielki wybuch '
+    AnswearC: 'Tanoc '
+    CorrectAnswear: C
+    FirstFunFact: "Dzie\u0144 i noc w trakcie r\xF3wnonocy trwaj\u0105 tyle samo
+      czasu. "
+    SecondFunFact: "R\xF3wnonoc przypada na 20/21 marca."
+    QuestionLevel: 1
+  - Question: "Kto wynalaz\u0142 Teleskop? "
+    AnswearA: 'Galileo '
+    AnswearB: "Miko\u0142aj Kopernik "
+    AnswearC: 'Hans Lippershey '
+    CorrectAnswear: C
+    FirstFunFact: "Pierwszy teleskop zosta\u0142 wynaleziony na pocz\u0105tku XVII
+      wieku."
+    SecondFunFact: "Jednym z najpopularniejszych teleskop\xF3w jest teleskop Hubble'a."
+    QuestionLevel: 2
+  - Question: "Kt\xF3ry obiekt z podanych jest najdalej od s\u0142o\u0144ca?"
+    AnswearA: 90377 Sedna
+    AnswearB: Neptun
+    AnswearC: Mars
+    CorrectAnswear: A
+    FirstFunFact: "Odkrycie sedn-y zosta\u0142o osi\u0105gni\u0119te przez amator\xF3w
+      z USA"
+    SecondFunFact: "Sedna jest okre\u015Blana jako 10 planeta w Uk\u0142adzie s\u0142onecznym. "
+    QuestionLevel: 3
+  - Question: "Pierwszy cz\u0142owiek w kosmosie to ?"
+    AnswearA: Louis Armstrong
+    AnswearB: Neil Armstrong
+    AnswearC: Jurij Gagarin
+    CorrectAnswear: C
+    FirstFunFact: "Pobyt Gagarina w kosmosie trwa\u0142 dok\u0142adnie 108  minut."
+    SecondFunFact: "Jurij Gagarin m\xF3g\u0142 zosta\u0107 hutnikiem."
+    QuestionLevel: 1
+  - Question: "Najbli\u017Csza planeta od s\u0142o\u0144ca"
+    AnswearA: Ziemia
+    AnswearB: Merkury
+    AnswearC: Jowisz
+    CorrectAnswear: B
+    FirstFunFact: "Merkury jest r\xF3wnie\u017C najmniejsz\u0105 planet\u0105 w uk\u0142adzie
+      s\u0142onecznym"
+    SecondFunFact: "Merkury posiada najchudzsz\u0105 atmosfer\u0119 w uk\u0142adzie
+      s\u0142onecznym."
+    QuestionLevel: 1
+  - Question: "Jak d\u0142ugo trwa dzie\u0144 na Wenus w por\xF3wnianiu do czasu
+      ziemskiego ?"
+    AnswearA: 10 dni
+    AnswearB: 40 dni
+    AnswearC: 243 dni
+    CorrectAnswear: C
+    FirstFunFact: "Planeta jest tak nazwana od imienia rzymskiej bogini mi\u0142o\u015Bci"
+    SecondFunFact: "Wenus jest drug\u0105 planet\u0105 od s\u0142o\u0144ca."
+    QuestionLevel: 3
+  - Question: Jakiego koloru jest ziemia na Marsie ?
+    AnswearA: Niebieskiego
+    AnswearB: Czerwonego
+    AnswearC: Zielonego
+    CorrectAnswear: B
+    FirstFunFact: Kolor gleby jest spowodowany zabarwieniem przez rdze
+    SecondFunFact: "Merkury posiada najchudzsz\u0105 atmosfer\u0119 w uk\u0142adzie
+      s\u0142onecznym."
+    QuestionLevel: 1
+  - Question: "Co maj\u0105 wsp\xF3lnego Wenus oraz Mercury ? "
+    AnswearA: "Maj\u0105 czarny Kolor "
+    AnswearB: 'Nic '
+    AnswearC: "Nie posiadaj\u0105 ksi\u0119\u017Cyca "
+    CorrectAnswear: C
+    FirstFunFact: "Istniej\u0105 tylko dwie planety bez ksi\u0119\u017Cyc\xF3w.  "
+    SecondFunFact: "Wenus jest drug\u0105 planet\u0105 od s\u0142o\u0144ca."
+    QuestionLevel: 2
+  - Question: "Jaki nazywa si\u0119 ustawienie trzech cia\u0142 niebieskich w jednej
+      linii? "
+    AnswearA: "Za\u0107mienie "
+    AnswearB: 'Trzask '
+    AnswearC: "Zwierzchno\u015B\u0107 "
+    CorrectAnswear: A
+    FirstFunFact: "W ka\u017Cdym roku mo\u017Cna do\u015Bwiadczy\u0107 od 3 do 5
+      za\u0107mie\u0144 ksi\u0119\u017Cyca."
+    SecondFunFact: "Ca\u0142kowite za\u0107mienie ksi\u0119\u017Cyca trwa maksymalnie
+      1 godzin\u0119 i 40 minut."
+    QuestionLevel: 1
+  - Question: "Najmniejsza planeta w uk\u0142adzie s\u0142onecznym to ?"
+    AnswearA: 'Jowisz '
+    AnswearB: 'Merkury '
+    AnswearC: Ziemia
+    CorrectAnswear: B
+    FirstFunFact: "J\u0105dro Merkurego jest p\u0142ynne. "
+    SecondFunFact: "Merkury jest drug\u0105 najgor\u0119tsza planet\u0105 w uk\u0142adzie
+      s\u0142onecznym."
+    QuestionLevel: 1
+  - Question: "Na jakiej planecie znajduje si\u0119 wulkan G\xF3ra Olimp?"
+    AnswearA: Jowisz
+    AnswearB: Ziemia
+    AnswearC: Mars
+    CorrectAnswear: C
+    FirstFunFact: "G\xF3ra Olimp jest wielko\u015Bci Polski."
+    SecondFunFact: "Mars jest 4 planet\u0105 od s\u0142o\u0144ca."
+    QuestionLevel: 3
+  - Question: "Pomi\u0119dzy jakimi planetami znajduje si\u0119 Pas Planetoid?"
+    AnswearA: Mars i Jowisz
+    AnswearB: Ziemia i Mars
+    AnswearC: Wenus i Merkury
+    CorrectAnswear: A
+    FirstFunFact: "Najwi\u0119kszy obiekt w pasie to Ceres."
+    SecondFunFact: "Merkury jest drug\u0105 najgor\u0119tsz\u0105 planet\u0105 w
+      uk\u0142adzie s\u0142onecznym."
+    QuestionLevel: 2
+  - Question: "Z czego zbudowane s\u0105 komety?"
+    AnswearA: Glina
+    AnswearB: "Ska\u0142a"
+    AnswearC: "\u015Anieg i l\xF3d"
+    CorrectAnswear: C
+    FirstFunFact: "Nasa w 1999 roku pobra\u0142a pr\xF3bk\u0119 komety. Znaleziono
+      w niej wod\u0119."
+    SecondFunFact: "Najs\u0142ynniejsza komet\u0105 jest kometa Halleya."
+    QuestionLevel: 1
+  - Question: "Na jakiej planecie znajduje si\u0119 Wielka Czerwona Plama?"
+    AnswearA: Ziemia
+    AnswearB: Mars
+    AnswearC: Jowisz
+    CorrectAnswear: C
+    FirstFunFact: Ta plama jest masywem atmosferycznym
+    SecondFunFact: "Wielka Czerowna Plama to burza wi\u0119ksza od Ziemi"
+    QuestionLevel: 2
+  - Question: "Dlaczego planety s\u0105 nazywane kar\u0142owatymi?"
+    AnswearA: "Odleg\u0142o\u015Bc od s\u0142o\u0144ca"
+    AnswearB: Rozmiar
+    AnswearC: Kolor
+    CorrectAnswear: B
+    FirstFunFact: "Obecnie jest oko\u0142o 650 obiekt\xF3w znanych jako planety kar\u0142owate."
+    SecondFunFact: "Jest 5 potwierdzonych planet kar\u0142owatych w Uk\u0142adzie
+      S\u0142onecznym."
+    QuestionLevel: 1
+  - Question: "Jaki ruch wykonuj\u0105 wszystkie planety?"
+    AnswearA: "Zwi\u0119kszaj\u0105cy i zmniejszaj\u0105cy"
+    AnswearB: "Wiruj\u0105cy"
+    AnswearC: "kr\u0119caj\u0105cy"
+    CorrectAnswear: B
+    FirstFunFact: Ruch planet opisuje Prawo Keplera.
+    SecondFunFact: "Uran jest trzeci\u0105 co do wielko\u015Bci planet\u0105."
+    QuestionLevel: 2
+  - Question: "Ile w przybli\u017Ceniu wynosi \u015Brednica Drogi Mlecznej w Latach
+      \u015Awietlnych?"
+    AnswearA: 100000 lat
+    AnswearB: 1000 lat
+    AnswearC: '100 lat '
+    CorrectAnswear: A
+    FirstFunFact: Droga Mleczna to odmiana spiralna galaktyk.
+    SecondFunFact: "Rok \u015Bwietlny trwa 365 dni."
+    QuestionLevel: 3
+  - Question: Nauka o kosmosie to?
+    AnswearA: Teologia
+    AnswearB: Astronomia
+    AnswearC: Astrofizyka
+    CorrectAnswear: B
+    FirstFunFact: "Watykan posiada w\u0142asne obserwatorium astronomiczne."
+    SecondFunFact: "Ziemia jest jedyn\u0105 planet\u0105 z tektonik\u0105 p\u0142yt."
+    QuestionLevel: 1
+  - Question: "W jakim roku statek kosmiczny Apollo 11 osiad\u0142 na ksi\u0119\u017Cycu?"
+    AnswearA: 1969
+    AnswearB: 1959
+    AnswearC: 1979
+    CorrectAnswear: A
+    FirstFunFact: "Po powrocie z ksi\u0119\u017Cyca astronauci zostali poddani kwarantannie."
+    SecondFunFact: "Zapas paliwa w Apollo 11 wynosi\u0142 tylko 25 sekund."
+    QuestionLevel: 1
+  - Question: "Kt\xF3ry z przyk\u0142ad\xF3w nie jest typem galaktyki?"
+    AnswearA: Elipsa
+    AnswearB: Spiralna
+    AnswearC: Kwadratowa
+    CorrectAnswear: A
+    FirstFunFact: "S\u0105 dok\u0142adnie 4 typy galaktyk."
+    SecondFunFact: "Obieg Marsa wok\xF3\u0142 s\u0142o\u0144ca trwa 687 dni ziemskich."
+    QuestionLevel: 2
+  <CurrentCoins>k__BackingField: 100000
+  <BestScores>k__BackingField: 0000000000000000000000000000000000000000

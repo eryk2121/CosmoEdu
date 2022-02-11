@@ -10,15 +10,21 @@ public class QuizElement
     string answerB;
     string answerC;
     string correct;
+    string funFactFirst;
+    string funFactSecond;
+    int questionLevel;
     bool used = false;
 
-    public QuizElement(string question, string answerA, string answerB, string answerC, string correct)
+    public QuizElement(string question, string answerA, string answerB, string answerC, string correct, string funFactFirst, string funFactSecond, int questionLevel)
     {
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
         this.correct = correct;
+        this.funFactFirst = funFactFirst;
+        this.funFactSecond = funFactSecond;
+        this.questionLevel = questionLevel;
     }
 
     public string Question { get => question; set => question = value; }
@@ -27,4 +33,8 @@ public class QuizElement
     public string AnswerC { get => answerC; set => answerC = value; }
     public bool Used { get => used; set => used = value; }
     public string Correct { get => correct; set => correct = value; }
+    public string FunFactFirst { get => funFactFirst; set => funFactFirst = value; }
+    public string FunFactSecond { get => funFactSecond; set => funFactSecond = value; }
+    public int QuestionLevel { get => questionLevel; set => questionLevel = value; }
+
 }

@@ -1,0 +1,2 @@
+com/DefaultCompany/CosmoEduPolishVersion/BuildConfig.java
+ com.DefaultCompany.CosmoEduPolishVersion.BuildConfig

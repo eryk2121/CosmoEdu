@@ -6,18 +6,24 @@ using UnityEngine;
 public class ShopData : MonoBehaviour
 {
     [SerializeField]
+    Data DataBase;
+    [SerializeField]
     Image healthProgresBar;
     [SerializeField]
     Image shieldProgresBar;
     [SerializeField]
     Image coinProgresBar;
-    // Start is called before the first frame update
+    [SerializeField]
+    Image weaponProgresBar;
+    [SerializeField]
+    Image freezeProgresBar;
+    [SerializeField]
+    CoinLoad coinLoad;
+
+
     void Start()
     {
         LoadShopData();
-        PlayerPrefs.SetInt("HealthUpgrade", 0);
-        PlayerPrefs.SetInt("ShieldUpgrade", 0);
-        PlayerPrefs.SetInt("CoinUpgrade", 0);
     }
 
     private void LoadShopData()
@@ -25,21 +31,23 @@ public class ShopData : MonoBehaviour
         healthProgresBar.fillAmount = 0.2f*PlayerPrefs.GetInt("HealthUpgrade");
         shieldProgresBar.fillAmount = 0.2f*PlayerPrefs.GetInt("ShieldUpgrade");
         coinProgresBar.fillAmount = 0.2f*PlayerPrefs.GetInt("CoinUpgrade");
+        weaponProgresBar.fillAmount = 0.2f * PlayerPrefs.GetInt("WeaponUpgrade");
+        freezeProgresBar.fillAmount = 0.2f * PlayerPrefs.GetInt("FreezeUpgrade");
     }
 
     public void UpgradeHealth()
     {
         int level = PlayerPrefs.GetInt("HealthUpgrade");
-        if (level < 5)
+        if (level < 5 && Buy()) //maksymalna ilość zakupu upgradu wynosi 5 
         {
-            PlayerPrefs.SetInt("HealthUpgrade", level+1);
+            PlayerPrefs.SetInt("HealthUpgrade", level + 1);
         }
         LoadShopData();
     }
     public void UpgradeShield()
     {
         int level = PlayerPrefs.GetInt("ShieldUpgrade");
-        if (level < 5)
+        if (level < 5 && Buy())
         {
             PlayerPrefs.SetInt("ShieldUpgrade", level + 1);
         }
@@ -48,10 +56,39 @@ public class ShopData : MonoBehaviour
     public void UpgradeCoin()
     {
         int level = PlayerPrefs.GetInt("CoinUpgrade");
-        if (level < 5)
+        if (level < 5 && Buy())
         {
             PlayerPrefs.SetInt("CoinUpgrade", level + 1);
         }
         LoadShopData();
+    }
+    public void UpgradeWeapon()
+    {
+        int level = PlayerPrefs.GetInt("WeaponUpgrade");
+        if (level < 5 && Buy())
+        {
+            PlayerPrefs.SetInt("WeaponUpgrade", level + 1);
+        }
+        LoadShopData();
+    }
+
+    public void UpgradeFreeze()
+    {
+        int level = PlayerPrefs.GetInt("FreezeUpgrade");
+        if (level < 5 && Buy())
+        {
+            PlayerPrefs.SetInt("FreezeUpgrade", level + 1);
+        }
+        LoadShopData();
+    }
+
+    private bool Buy()
+    {
+        if (DataBase.CurrentCoins >= 100)
+        {
+            DataBase.CurrentCoins -= 100;
+            return true;
+        }
+        return false;
     }
 }

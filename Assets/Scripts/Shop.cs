@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public Data dataBase;
     public Image ship1;
     public Image ship2;
     public Image ship3;
@@ -13,7 +14,7 @@ public class Shop : MonoBehaviour
 
     public void LoadShopData()
     {
-        if (PlayerPrefs.GetInt("Ship1B") == 1)
+        if (PlayerPrefs.GetInt("Ship1B") == 1) 
         {
             ship1.color = new Color32(100, 100, 90, 225);
         }
@@ -37,88 +38,101 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("CorrectAnswer", 0);
-        PlayerPrefs.SetInt("Ship1B", 1);
-        PlayerPrefs.SetInt("Ship2B", 0);
-        PlayerPrefs.SetInt("Ship3B", 0);
-        PlayerPrefs.SetInt("Ship4B", 0);
-        PlayerPrefs.SetInt("Ship5B", 0);
         LoadShopData();
     }
 
-    public void BuyShip1()
+    public void BuyShip1() //funkcja odpowiadająca za zakup skórki
     {
-        if (Buy() || PlayerPrefs.GetInt("Ship1B")==1)
+        if (PlayerPrefs.GetInt("Ship1B")==1) //jeżeli wygląd jest już posiadany, ustawiamy go jako aktywny
         {
-            Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship1");
             PlayerPrefs.SetInt("Ship1B", 1);
         }
-        LoadShopData();
-
-    }
-
-    public void BuyShip2()
-    {
-        if (Buy() || PlayerPrefs.GetInt("Ship2B") == 1)
+        else if (Buy(100)) //jeżeli wygląd nie jest posiadany kupujemy go
         {
-            Gamedata gd = FindObjectOfType<Gamedata>();
-            PlayerPrefs.SetString("Ship", "Ship2");
-            PlayerPrefs.SetInt("Ship2B", 1);
+          PlayerPrefs.SetString("Ship", "Ship1");
+          PlayerPrefs.SetInt("Ship1B", 1);
 
         }
         LoadShopData();
+    }
 
+
+    public void BuyShip2()
+    {
+        if (PlayerPrefs.GetInt("Ship2B")==1)
+        {
+            PlayerPrefs.SetString("Ship", "Ship2");
+            PlayerPrefs.SetInt("Ship2B", 1);
+        }
+        else if (Buy(200))
+        {
+          PlayerPrefs.SetString("Ship", "Ship1");
+          PlayerPrefs.SetInt("Ship2B", 1);
+
+        }
+        LoadShopData();
     }
 
     public void BuyShip3()
     {
-        if (Buy() || PlayerPrefs.GetInt("Ship3B") == 1)
+        if (PlayerPrefs.GetInt("Ship3B")==1)
         {
-            Gamedata gd = FindObjectOfType<Gamedata>();
-            PlayerPrefs.SetString("Ship", "Ship3");
+            PlayerPrefs.SetString("Ship", "Ship1");
             PlayerPrefs.SetInt("Ship3B", 1);
+        }
+        else if (Buy(400))
+        {
+          PlayerPrefs.SetString("Ship", "Ship1");
+          PlayerPrefs.SetInt("Ship3B", 1);
 
         }
         LoadShopData();
-
     }
 
     public void BuyShip4()
     {
-        if (Buy() || PlayerPrefs.GetInt("Ship4B") == 1)
+        if (PlayerPrefs.GetInt("Ship4B")==1)
         {
-            Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship4");
             PlayerPrefs.SetInt("Ship4B", 1);
+        }
+        else if (Buy(800))
+        {
+          PlayerPrefs.SetString("Ship", "Ship4");
+          PlayerPrefs.SetInt("Ship4B", 1);
 
         }
         LoadShopData();
-
     }
 
     public void BuyShip5()
     {
-        if (Buy() || PlayerPrefs.GetInt("Ship5B") == 1)
+        if (PlayerPrefs.GetInt("Ship5B")==1)
         {
-            Gamedata gd = FindObjectOfType<Gamedata>();
             PlayerPrefs.SetString("Ship", "Ship5");
             PlayerPrefs.SetInt("Ship5B", 1);
+        }
+        else if (Buy(1600))
+        {
+          PlayerPrefs.SetString("Ship", "Ship5");
+          PlayerPrefs.SetInt("Ship5B", 1);
 
         }
         LoadShopData();
-
     }
 
-    private bool Buy()
+ 
+
+    private bool Buy(int cost)
     {
-        if (PlayerPrefs.GetInt("Coins") >= 100)
+        if (dataBase.CurrentCoins >= cost)
         {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins")-100);
+            dataBase.CurrentCoins -= cost;
 
             return true;
         }
-        return false; 
+        return false;
     }
 
 

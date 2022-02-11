@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 577}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 231, y: 587.9861}
+  m_SizeDelta: {x: 32.791, y: 78.0279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2344191182399988870
 CanvasRenderer:
@@ -63,11 +63,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 922fde6e75ac65e41b5ca9ff887e6e2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 970df9d260344914e90b716fc97000c8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -99,24 +100,29 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -12.930613, y: 27.347343}
+  - {x: -11.315012, y: 17.97686}
   - {x: 1.3370657, y: 45.03162}
   - {x: 11.161909, y: 21.269547}
-  - {x: 11.724678, y: -6.5456076}
+  - {x: 15.8810425, y: 4.3634033}
+  - {x: 16.24836, y: -9.776809}
   - {x: 13.912588, y: -27.682856}
   - {x: 8.798621, y: -34.6279}
-  - {x: 0.5810769, y: -40.61031}
+  - {x: 0.5810769, y: -40.28719}
   - {x: -9.564226, y: -38.27403}
   - {x: -14.543209, y: -31.633717}
   - {x: -16.05183, y: -21.56468}
-  - {x: -16.232222, y: 3.9389524}
-  - {x: -12.552117, y: 27.9689}
+  - {x: -14.616621, y: 1.0308714}
+  - {x: -11.582757, y: 18.275297}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!50 &-6961251410108837354
 Rigidbody2D:
   serializedVersion: 4

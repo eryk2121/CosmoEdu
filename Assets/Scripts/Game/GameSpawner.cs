@@ -1,10 +1,18 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameSpawner : MonoBehaviour
 {
+    public GameObject satellite;
     public GameObject meteorPrefab;
     public GameObject heartPrefab;
+    public GameObject shieldPrefab;
+    public GameObject coinPrefab;
+    public GameObject freezePrefab;
+
+    public Text wave;
+
     public GameObject parent;
 
     public GameObject bossPrefab;
@@ -22,42 +30,61 @@ public class GameSpawner : MonoBehaviour
     private long deltaTime = (20000000);
     private GameObject boss;
 
-    // Update is called once per frame
+    
     void Update()
     {
-        if (DateTime.Now.Ticks - time >= deltaTime)
+        if (Pause.pause)
         {
-            SpawnMeteor(); 
-
-            time = DateTime.Now.Ticks;
-        
-            if (deltaTime > 10000000)
-            {
-                deltaTime -= 50000;
-            }
-
-            if (UnityEngine.Random.Range(1,10) == 5)
-            {
-                SpawnPowerUp();
-            }
-        }
-
-        if (DateTime.Now.Ticks - eventM >= 200000000)
-        {
-
-            for (int i = 0; i < UnityEngine.Random.Range(7, 15); i++)
+            if (DateTime.Now.Ticks - time >= deltaTime)
             {
                 SpawnMeteor();
+             
+
+                if (UnityEngine.Random.Range(1, 15) == 5)
+                {
+                    SpawnSatellite();
+                }
+
+
+                time = DateTime.Now.Ticks;
+
+                if (deltaTime > 10000000)
+                {
+                    deltaTime -= 50000;
+                }
+
+                if (UnityEngine.Random.Range(1, 20) == 5)
+                {
+                    SpawnPowerUp();
+                }
             }
 
-            eventM = DateTime.Now.Ticks;
+
+
+            if (DateTime.Now.Ticks - eventM >= 150000000)
+            {
+
+                for (int i = 0; i < UnityEngine.Random.Range(5, 12); i++)
+                {
+                    SpawnMeteor();
+                }
+
+                eventM = DateTime.Now.Ticks;
+            }
+
+            if (ship.GetScore() % 200 == 0 && ship.GetScore() > 0 && boss == null)
+            {
+                SpawnBoss();
+            }
         }
 
-        if (ship.GetScore() % 100 == 0 && ship.GetScore() > 0 && boss == null)
-        {
-            SpawnBoss();
-        }
+    }
 
+    void SpawnShield()
+    {
+        GameObject newPowerUp = Instantiate(shieldPrefab);
+        newPowerUp.transform.position = new Vector3(UnityEngine.Random.Range(0, Screen.width), Screen.height * 1.2f, 1);
+        newPowerUp.transform.SetParent(parent.transform);
     }
 
     void SpawnMeteor()
@@ -70,7 +97,7 @@ public class GameSpawner : MonoBehaviour
         newMeteor.transform.SetParent(parent.transform);
     }
 
-    void SpawnPowerUp()
+    void SpawnHeart()
     {
         GameObject newPowerUp = Instantiate(heartPrefab);
         newPowerUp.transform.position = new Vector3(UnityEngine.Random.Range(0, Screen.width), Screen.height * 1.2f, 1);
@@ -78,8 +105,49 @@ public class GameSpawner : MonoBehaviour
 
     }
 
+    void SpawnCoin()
+    {
+        GameObject newPowerUp = Instantiate(coinPrefab);
+        newPowerUp.transform.position = new Vector3(UnityEngine.Random.Range(0, Screen.width), Screen.height * 1.2f, 1);
+        newPowerUp.transform.SetParent(parent.transform);
+    }
+
+    void SpawnSatellite()
+    {
+        GameObject newSatellite = Instantiate(satellite);
+        newSatellite.transform.position = new Vector3(UnityEngine.Random.Range(0, Screen.width), Screen.height * 1.2f, 1);
+        newSatellite.transform.SetParent(parent.transform);
+    }
+
+    void SpawnFreeze()
+    {
+        GameObject newFreeze = Instantiate(freezePrefab);
+        newFreeze.transform.position = new Vector3(UnityEngine.Random.Range(0, Screen.width), Screen.height * 1.2f, 1);
+        newFreeze.transform.SetParent(parent.transform);
+    }
+
+    void SpawnPowerUp()
+    {
+        switch (UnityEngine.Random.Range(1, 5))
+        {
+            case 1:
+                SpawnHeart();
+                break;
+            case 2:
+                SpawnShield();
+                break;
+            case 3:
+                SpawnCoin();
+                break;
+            case 4:
+                SpawnFreeze();
+                break;
+        }
+    }
+
     private int bossLevel = 1;
-    
+    public static int waveLevel = 1;
+
     void SpawnBoss()
     {
         boss = Instantiate(bossPrefab);
@@ -88,7 +156,9 @@ public class GameSpawner : MonoBehaviour
 
         Boss bossScript = boss.GetComponent<Boss>();
 
-        bossScript.SetLevel(bossLevel);
+        bossScript.SetLevel(waveLevel);
+
+        wave.text = "Fala:" + waveLevel;
 
         if (bossLevel % 1 == 0)
         {
@@ -112,7 +182,6 @@ public class GameSpawner : MonoBehaviour
         if (bossLevel % 5 == 0)
         {
             bossScript.SetSprite(ship5);
-
         }
 
         if(bossLevel == 5)
@@ -120,10 +189,8 @@ public class GameSpawner : MonoBehaviour
             bossLevel = 1;
         }
 
-
-
-
-
+        waveLevel++;
+        bossLevel++;
     }
 
     public void ResetProgres()

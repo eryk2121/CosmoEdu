@@ -7,7 +7,7 @@ public class Satellite : MonoBehaviour
 
     bool left = true;
 
-    float startX;
+    float startX; //pozycja początkowa satelity
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class Satellite : MonoBehaviour
         {
             if (left)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 2f, gameObject.transform.position.y - 5.5f + (1 * GameSpawner.waveLevel));
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 2f, gameObject.transform.position.y - 5.5f + (1 * GameSpawner.waveLevel)); 
                 if (gameObject.transform.position.x < startX - 80)
                 {
                     left = false;
@@ -35,8 +35,8 @@ public class Satellite : MonoBehaviour
                     left = true;
                 }
             }
-
-            if (GetComponent<RectTransform>().localPosition.y < -1500)
+            //niszczenie obiektu przy przekroczeniu granicy 800 jedostek
+            if (GetComponent<RectTransform>().localPosition.y < -800)//-1500
             {
                 Destroy(this.gameObject);
             }
